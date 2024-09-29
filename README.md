@@ -1,12 +1,12 @@
 # Inkstone
-Text Editor - PWA (Progressive Web Application)
 
-# Employee Tracker
+Text Editor - PWA (Progressive Web Application)
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 ## Description
-Employee Tracker is a command-line application for managing a company’s employee database using Node.js, Inquirer, and PostgreSQL. It allows users to view, add, and update employees, roles, and departments, and track the relationships between them, including managers.
+
+A Progressive Web Application (PWA) that serves as a simple text editor. This application allows users to create, edit, and save text files with offline capabilities. It also supports installation on your device for a native-like experience.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -16,18 +16,49 @@ Employee Tracker is a command-line application for managing a company’s employ
 - [Tests](#tests)
 - [Questions](#questions)
 
-## Installation
+## Features
 
-To run this application locally:
+- Create and edit text documents
+- Save files to local storage
+- Offline functionality using service workers
+- Installable as a PWA for a native app experience
+
+## Technologies Used
+
+- Javascript
+- HTML
+- CSS
+- Webpack
+- Workbox (for service workers)
+- IndexedDB (for local storage)
+- Babel (for JavaScript transpilation)
+
+## Tests
+
+The application includes automated tests to ensure functionality and reliability. To run the tests:
+
+1.	Make sure all dependencies are installed:
+```
+npm install
+```
+
+2. Run the test suite using Jest
+```
+npm test
+```
+
+3. Check the test results in the terminal to ensure all test pass.
+
+## Installation
 
 1.	Clone the repository:
 ```
-git clone https://github.com/wilsacker/Week-12-Challenge.git
+git clone https://github.com/wilsacker/Inkstone.git
 ```
 
 2. Navigate to the project directory:
 ```
-cd Week-12-Challenge
+cd Inkstone
 ```
 
 3. Install the dependencies:
@@ -35,66 +66,30 @@ cd Week-12-Challenge
 npm install
 ```
 
-4.	Install PostgreSQL if you haven’t already: [PostgreSQL Installation Guide](https://www.postgresql.org/download/)
-
-5.	Set up the database:
-•	Ensure your PostgreSQL server is running.
-•	Run the schema to create the database:
-```
-psql -U postgres -d postgres -f db/schema.sql
-```
-
-•	Seed the database:
-```
-psql -U postgres -d employee_tracker -f db/seed.sql
-```
-
-6. Set up environment variables:
-•	Create a .env file using the .env.example file in the root directory.
-•	Add in the missing variables to configure your database.
-
 ## Usage
-1.	Run the application using the following command:
+
+1.	Run the application in development mode:
 ```
-node index.js
+npm run dev
 ```
 
-2.	You will be prompted with several options to:
-•	View all employees, roles, or departments.
-•	Add new employees, roles, or departments.
-•	Update an employee’s role.
-•	View employees by manager or department.
-•	Remove employees, roles, or departments.
+2.	Open your browser and navigate to http://localhost:8080 to use the text editor.
 
-[Walkthrough Video](https://drive.google.com/file/d/1dMHIO_uBVVycaI1JfX9E-tCu8FtZurcZ/view?usp=sharing)
+## Offline Functionality
 
-## Features
+The application can function offline by using service workers. To test this:
 
-•	View Employees: Display a list of all employees with their details (role, department, salary, manager).
-•	Add Employees: Add new employees, specifying their role and manager.
-•	Update Employee Role: Modify the role of an existing employee.
-•	View Roles & Departments: Display all available roles and departments.
-•	Add Roles & Departments: Create new roles and departments.
-•	Remove Records: Remove employees, roles, and departments.
-
-## Technologies
-
-•	Node.js: Backend framework used to build the application.
-•	Inquirer.js: For handling user prompts in the command-line interface.
-•	PostgreSQL: Database for storing company employee data.
-•	pg-pool: PostgreSQL client for Node.js to manage database connections.
+1.	Open Developer Tools in your browser.
+2.	Go to the “Network” tab and check the “Offline” option.
+3.	Refresh the page and access the offline page.
 
 ## License
 
-This project is licensed under the MIT license.
+This project is licensed under the MIT License
 
 ## Contributing
 
 Contributions are welcome! Feel free to fork the repository and submit pull requests to improve the functionality or fix bugs.
-
-## Tests
-
-This project doesn’t include any test suites, but you can manually test it by interacting with the application or by setting up jest.
 
 ## Questions
 
