@@ -20,6 +20,10 @@ module.exports = () => {
         template: './index.html', // Path relative to the client folder
         title: 'JATE',
       }),
+      new HtmlWebpackPlugin({
+        template: './offline.html', // Path to your offline HTML
+        filename: 'offline.html', // Output filename
+      }),
       new InjectManifest({
         swSrc: './src/js/src-sw.js', // Path relative to the client folder
         swDest: 'service-worker.js'
