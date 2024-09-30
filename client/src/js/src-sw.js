@@ -10,7 +10,7 @@ precacheAndRoute(self.__WB_MANIFEST);
 
 // Fallback to offline.html when the user is offline
 offlineFallback({
-  pageFallback: '/offline.html', // Path to your offline page
+  pageFallback: '/client/offline.html', // Path to your offline page
 });
 
 const pageCache = new CacheFirst({
