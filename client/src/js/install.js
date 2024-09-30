@@ -1,37 +1,25 @@
 const butInstall = document.getElementById('buttonInstall');
 
 // Logic for installing the PWA
-// An event handler to the `beforeinstallprompt` event
-let deferredPrompt;
-
+// Event handler to the `beforeinstallprompt` event
 window.addEventListener('beforeinstallprompt', (event) => {
-  // Prevent the mini-infobar from appearing on mobile
-  event.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = event;
-  // Make the install button visible
-  butInstall.style.display = 'block';
+    event.preventDefault();
+    window.deferredPrompt = event; // Store the event for later use
+    butInstall.classList.toggle('hidden', false); // Remove the hidden class from the button
 });
 
-// A click event handler on the `butInstall` element
+// Click event handler on the `butInstall` element
 butInstall.addEventListener('click', async () => {
-    if (!deferredPrompt) {
-      return;
-    }
-    // Show the install prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`User response to the install prompt: ${outcome}`);
-    // Clear the deferredPrompt variable, it can only be used once.
-    deferredPrompt = null;
-    // Hide the install button
-    butInstall.style.display = 'none';
-  });
+    const promptEvent = window.deferredPrompt;
+    if (!promptEvent) return;
+    promptEvent.prompt(); // Show the install prompt
+    window.deferredPrompt = null; // Reset the deferred prompt variable
+    butInstall.classList.toggle('hidden', true); // Hide the install button
+});
 
-// An handler for the `appinstalled` event
-window.addEventListener('appinstalled', (event) => {
-    console.log('PWA was installed', event);
-    // Optionally, you can hide the install button or provide feedback to the user
-    butInstall.style.display = 'none';
-  });
+// Handler for the `appinstalled` event
+window.addEventListener('appinstalled', () => {
+    console.log('App installed successfully!');
+    // Clear the deferredPrompt
+    window.deferredPrompt = null;
+});
